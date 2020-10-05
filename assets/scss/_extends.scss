@@ -19,3 +19,37 @@
         padding-bottom: $gap * 3;
     }
 }
+% btn-common {
+    display: block;
+    transition: background-color 0.5s, border-color 0.5s;
+    text-align: center;
+    letter-spacing: 0.1em;
+    font-size: 1.125rem;
+    height: 60px;
+    padding: 18px $gap;
+    border-width: 2px;
+    border-style: solid;
+    &:hover,
+    &:focus {
+        background-color: $color-accent;
+    }
+}
+%btn-min-size {
+    @include sm-min {
+        min-width: 350px;
+    }
+    @include sm {
+        width: 100%;
+    }
+}
+
+%btn-wrapper {
+    @include sm-min {
+        display: flex;
+        justify-content: center;
+    }
+
+    .btn-accent {
+        @extend %btn-min-size;
+    }
+}
