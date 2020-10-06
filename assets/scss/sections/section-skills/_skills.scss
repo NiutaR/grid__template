@@ -34,7 +34,6 @@
     }
 
     &__button {
-        display: flex;
-        justify-content: center;
+        @extend %btn-wrapper;
     }
 }

@@ -470,6 +470,24 @@ template {
   padding-right: 20px;
 }
 
+.btn, .btn-accent {
+  display: block;
+  -webkit-transition: background-color 0.5s, border-color 0.5s;
+  -o-transition: background-color 0.5s, border-color 0.5s;
+  transition: background-color 0.5s, border-color 0.5s;
+  text-align: center;
+  letter-spacing: 0.1em;
+  font-size: 1.125rem;
+  height: 60px;
+  padding: 18px 20px;
+  border-width: 2px;
+  border-style: solid;
+}
+
+.btn:hover, .btn-accent:hover, .btn:focus, .btn-accent:focus {
+  background-color: #d66926;
+}
+
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -516,52 +534,27 @@ p {
   color: #637588;
 }
 
-input {
-  margin: 0;
-  font-family: "Roboto", sans-serif;
-  line-height: 1.15;
-}
-
-.btn,
-.btn-accent {
-  display: block;
-  -webkit-transition: background-color 0.5s;
-  -o-transition: background-color 0.5s;
-  transition: background-color 0.5s;
-  text-align: center;
-  letter-spacing: 0.1em;
+input:focus {
+  outline: none;
 }
 
 .btn {
-  border: 2px solid #ffffff;
+  border-color: #ffffff;
   background-color: rgba(255, 255, 255, 0.1);
 }
 
 .btn-accent {
-  letter-spacing: 0.1em;
-  font-size: 1.125rem;
-  height: 60px;
-  padding: 18px 20px;
-  border: 2px solid #2d3651;
+  border-color: #2d3651;
   background-color: rgba(45, 54, 81, 0.8);
-}
-
-.btn:hover,
-.btn:focus,
-.btn-accent:hover,
-.btn-accent:focus {
-  background-color: #d66926;
 }
 
 .header {
   min-height: 100vh;
   background-color: #2d3651;
-  background-image: url(../img/img-header.png);
+  position: relative;
   background-position: 50% 50%;
   background-size: cover;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  display: grid;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -581,6 +574,7 @@ input {
 .header-menu {
   position: absolute;
   top: 0;
+  left: 0;
   width: 100%;
   z-index: 1;
 }
@@ -588,9 +582,6 @@ input {
 .header-menu__container {
   display: grid;
   grid-template-columns: auto 1fr;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
 }
 
 .header-logo {
@@ -703,7 +694,10 @@ input {
 
 .header-content {
   position: relative;
-  width: 100%;
+}
+
+.header-content__container {
+  display: grid;
 }
 
 .header-content__title {
@@ -715,27 +709,16 @@ input {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-}
-
-.header-content__buttons .btn:first-of-type .btn:first-of-type {
-  margin-right: 20px;
 }
 
 .skills__container {
   display: grid;
   padding-bottom: 20px;
-}
-
-.skills__button {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
 }
 
 .skill-item {
@@ -924,8 +907,8 @@ input {
   display: block;
   width: 100%;
   height: 60px;
-  padding-right: 20px;
-  padding-left: 20px;
+  padding-right: 30px;
+  padding-left: 30px;
   -webkit-transition: background-color 0.5s, border-color 0.5s;
   -o-transition: background-color 0.5s, border-color 0.5s;
   transition: background-color 0.5s, border-color 0.5s;
@@ -987,15 +970,6 @@ input {
   display: grid;
   padding-bottom: 20px;
   grid-gap: 20px;
-}
-
-.posts__button {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
 }
 
 .post-item {
@@ -1156,16 +1130,16 @@ input {
 }
 
 @media (min-width: 576px) {
-  .btn-accent {
+  .skills__button .btn-accent, .posts__button .btn-accent {
     min-width: 350px;
   }
-  .header-content__buttons {
+  .skills__button, .posts__button {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
-  }
-  .header-content__buttons .btn:first-of-type {
-    margin-right: 20px;
   }
   .skills {
     padding: 10px 10px 40px;
@@ -1208,14 +1182,14 @@ input {
     font-size: 2.5rem;
     margin-bottom: 56px;
   }
-  .btn {
-    min-width: 250px;
-    height: 60px;
-    padding: 18px 20px;
-    font-size: 1.125rem;
-  }
   .header-content__title {
     margin: 0 0 53px 0;
+  }
+  .header-content__buttons .btn {
+    min-width: 250px;
+  }
+  .header-content__buttons .btn:not(:last-of-type) {
+    margin-right: 20px;
   }
   .skills__container {
     grid-gap: 10px;
@@ -1253,13 +1227,19 @@ input {
     font-size: 2rem;
     margin-bottom: 42px;
   }
-  .btn {
-    min-width: 200px;
-    height: 50px;
-    padding: 14px 20px;
-  }
   .header-content__title {
     margin: 0 0 43px 0;
+  }
+  .header-content__buttons .btn {
+    min-width: 200px;
+    height: 50px;
+    padding-top: 14px;
+    padding-bottom: 14px;
+    letter-spacing: 0.1em;
+    font-size: 1rem;
+  }
+  .header-content__buttons .btn:not(:last-of-type) {
+    margin-right: 20px;
   }
   .skills__container {
     grid-gap: 10px;
@@ -1290,12 +1270,6 @@ input {
   h1 {
     font-size: 1.875rem;
   }
-  .btn {
-    min-width: 170px;
-    height: 40px;
-    padding: 10px 20px;
-    letter-spacing: 0.05em;
-  }
   .header-menu {
     background-color: rgba(68, 89, 110, 0.25);
   }
@@ -1322,6 +1296,17 @@ input {
   h2 {
     font-size: 1.5rem;
     margin-bottom: 36px;
+  }
+  .header-content__buttons .btn {
+    min-width: 170px;
+    height: 40px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    letter-spacing: 0.05em;
+    font-size: 1rem;
+  }
+  .header-content__buttons .btn:not(:last-of-type) {
+    margin-right: 20px;
   }
   .skills__container {
     grid-gap: 10px;
@@ -1354,13 +1339,13 @@ input {
 }
 
 @media (max-width: 575.8px) {
+  .skills__button .btn-accent, .posts__button .btn-accent {
+    width: 100%;
+  }
   h2 {
     font-size: 1.5rem;
     margin-bottom: 36px;
     text-align: center;
-  }
-  .btn-accent {
-    width: 100%;
   }
   .header-content__buttons {
     -webkit-box-orient: vertical;
@@ -1371,7 +1356,15 @@ input {
         -ms-flex-align: center;
             align-items: center;
   }
-  .header-content__buttons .btn:first-of-type {
+  .header-content__buttons .btn {
+    min-width: 170px;
+    height: 40px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    letter-spacing: 0.05em;
+    font-size: 1em;
+  }
+  .header-content__buttons .btn:not(:last-of-type) {
     margin-bottom: 20px;
   }
   .skills {

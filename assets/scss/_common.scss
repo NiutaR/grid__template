@@ -64,16 +64,14 @@ a {
 p {
     color: $color-gray;
 }
-input {
-    margin: 0;
-    font-family: $font-main;
-    line-height: 1.15;
+input:focus {
+    outline: none;
+    
 }
 
 .btn {
     border-color: $color-light;
     background-color: rgba($color-light, 0.1);
-
     @extend %btn-common;
 }
 .btn-accent {
